@@ -17,11 +17,7 @@ const PokemonDetails = lazy(() => import('../pages/PokemonDetails'));
 
 const App = () => (
   <Suspense fallback={<div />}>
-    <Provider store={store}>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </Provider>
+    <RouterProvider router={router} />
   </Suspense>
 );
 
