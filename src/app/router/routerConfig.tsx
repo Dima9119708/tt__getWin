@@ -3,7 +3,7 @@ import LayoutRoot from 'app/LayoutRoot/LayoutRoot';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: __BASE_ROUTE__,
     element: <LayoutRoot />,
     children: [
       {

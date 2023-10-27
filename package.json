@@ -7,7 +7,7 @@
     "start": "webpack serve --no-open --env port=3000",
     "start:dev:server": "",
     "build:dev": "webpack --env mode=development",
-    "build:prod": "webpack --env mode=production",
+    "build:prod": "webpack --env mode=production baseRoute=/tt__getWin/",
     "lint:ts": "eslint \"**/*.{ts,tsx,js,jsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "lint:css": "yarn stylelint \"src/**/*.css\"",

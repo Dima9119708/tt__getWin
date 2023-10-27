@@ -14,6 +14,7 @@ interface IBuildEnv {
   mode: 'development' | 'production'
   port: number,
   apiURL: string,
+  baseRoute: string,
 }
 
 export default (env: IBuildEnv) => {
@@ -22,6 +23,7 @@ export default (env: IBuildEnv) => {
   const isDev = mode === 'development';
   const isProd = !isDev;
   const apiUrl = env?.apiURL || 'http://localhost:8000';
+  const baseRoute = env.baseRoute || '/';
 
   const devServer: DevServerConfiguration = {
     open: true,
@@ -82,6 +84,9 @@ export default (env: IBuildEnv) => {
       new HtmlWebpackPlugin({
         favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
         template: path.resolve(__dirname, 'public', 'index.html')
+      }),
+      new webpack.DefinePlugin({
+        __BASE_ROUTE__: JSON.stringify(baseRoute),
       }),
       isProd && new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',

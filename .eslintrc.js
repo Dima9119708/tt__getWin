@@ -14,6 +14,9 @@ module.exports = {
   extends: ['eslint:recommended', 'airbnb'],
   ignorePatterns: ['webpack.config.ts'],
   plugins: ['@typescript-eslint', 'react', 'i18next', 'react-hooks'],
+  globals: {
+    __BASE_ROUTE__: true,
+  },
   rules: {
     indent: [2, 2, { SwitchCase: 1 }],
     'react/jsx-indent': [2, 2],
