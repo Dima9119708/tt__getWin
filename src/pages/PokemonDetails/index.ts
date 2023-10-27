@@ -5,5 +5,3 @@ export {
   pokemonDetailsSlice,
   PokemonDetails,
 };
-
-export default PokemonDetails

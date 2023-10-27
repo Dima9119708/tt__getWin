@@ -87,10 +87,6 @@ export default (env: IBuildEnv) => {
         filename: 'static/css/[name].[contenthash:8].css',
         chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
       }),
-      new webpack.DefinePlugin({
-        __IS_DEV__: JSON.stringify(isDev),
-        __API__: JSON.stringify(apiUrl),
-      }),
       isProd && new CopyPlugin({
         patterns: [
           {

@@ -2,7 +2,7 @@
   "name": "crypto-wallet-admins-ui",
   "version": "0.1.1",
   "private": true,
-  "homepage": "https://dima9119708.github.io/tt__getWin",
+  "homepage": "https://dima9119708.github.io/tt__getWin/",
   "scripts": {
     "start": "webpack serve --no-open --env port=3000",
     "start:dev:server": "",
