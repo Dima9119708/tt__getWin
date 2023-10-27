@@ -12,7 +12,6 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "lint:css": "yarn stylelint \"src/**/*.css\"",
     "lint:css:fix": "yarn stylelint \"src/**/*.css\" --fix",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test:unit": "jest"
   },

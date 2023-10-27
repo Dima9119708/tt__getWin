@@ -1,5 +1,4 @@
 import path from 'path';
-import fs from 'fs'
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
@@ -8,7 +7,6 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
-import Dotenv from 'dotenv-webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 
@@ -16,14 +14,6 @@ interface IBuildEnv {
   mode: 'development' | 'production'
   port: number,
   apiURL: string,
-}
-
-const getPathEnvFile = (isDev: boolean) => {
-  if (isDev) {
-    return fs.existsSync('.env.local') ? './.env.local' : './.env'
-  }
-
-  return './.env'
 }
 
 export default (env: IBuildEnv) => {
@@ -101,7 +91,6 @@ export default (env: IBuildEnv) => {
         __IS_DEV__: JSON.stringify(isDev),
         __API__: JSON.stringify(apiUrl),
       }),
-      new Dotenv({ path: getPathEnvFile(isDev) }),
       isProd && new CopyPlugin({
         patterns: [
           {
