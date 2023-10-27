@@ -1,10 +1,10 @@
 {
-  "main.css": "/tt__getWin/static/css/main.fcc03506.css",
-  "main.js": "/tt__getWin/tt__getWin/static/js/main.01e2f2f1.js",
-  "favicon.ico": "/tt__getWin/favicon.ico",
-  "tt__getWin/static/media/pokeapi_256.png": "/tt__getWin/tt__getWin/static/media/pokeapi_256.888baca4809420be1126.png",
-  "logo512.png": "/tt__getWin/logo512.png",
-  "logo192.png": "/tt__getWin/logo192.png",
-  "index.html": "/tt__getWin/index.html",
-  "robots.txt": "/tt__getWin/robots.txt"
+  "main.css": "static/css/main.fcc03506.css",
+  "main.js": "static/js/main.a49da286.js",
+  "favicon.ico": "favicon.ico",
+  "static/media/pokeapi_256.png": "static/media/pokeapi_256.888baca4809420be1126.png",
+  "logo512.png": "logo512.png",
+  "logo192.png": "logo192.png",
+  "index.html": "index.html",
+  "robots.txt": "robots.txt"
 }
