@@ -86,7 +86,7 @@ export default (env: IBuildEnv) => {
         template: path.resolve(__dirname, 'public', 'index.html')
       }),
       new webpack.DefinePlugin({
-        __BASE_ROUTE__: JSON.stringify(baseRoute),
+        __BASE_APP_ROUTE__: JSON.stringify(baseRoute),
       }),
       isProd && new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css',
