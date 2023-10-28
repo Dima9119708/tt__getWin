@@ -1,7 +1,7 @@
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import {
-  Avatar, Chip, Divider, Grid, IconButton, Skeleton, Typography,
+  Avatar, Chip, Divider, Fade, Grid, IconButton, Skeleton, Typography,
 } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback, useEffect } from 'react';
@@ -39,10 +39,12 @@ const PokemonDetails = () => {
           { isLoading
             ? <Skeleton variant="circular" className="h-[25rem] w-[25rem]" />
             : (
-              <Avatar
-                src={imgSrc}
-                className="h-[25rem] w-[25rem]"
-              />
+              <Fade in timeout={400}>
+                <Avatar
+                  src={imgSrc}
+                  className="h-[25rem] w-[25rem]"
+                />
+              </Fade>
             )}
         </Grid>
 

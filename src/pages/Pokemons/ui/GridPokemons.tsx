@@ -1,11 +1,12 @@
 import {
   Grid,
-  Skeleton,
+  Skeleton, Typography,
 } from '@mui/material';
 import { useGridController } from 'pages/Pokemons/lib/useGridController';
 import { getPokemonsRequest } from 'pages/Pokemons';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useAppSelector } from 'shared/hooks/useAppSelector';
+import SearchOffIcon from '@mui/icons-material/SearchOff';
 import { pokemonsSlice } from '../model/slice/pokemonsSlice';
 import CardPokemon from './CardPokemon';
 
@@ -42,6 +43,15 @@ const GridPokemons = () => {
             <CardPokemon {...pokemon} />
           </Grid>
         ))
+      }
+
+      {
+        !isLoading && !data.length && (
+          <div className="flex-center flex-col w-full min-h-[40rem]">
+            <SearchOffIcon className="h-[15rem] w-[15rem]" />
+            <Typography variant="h4">Not Found</Typography>
+          </div>
+        )
       }
     </Grid>
   );

@@ -1,13 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from 'shared/config/api/apiConfig';
 import { AxiosError } from 'axios';
+import { ThunkApiConfig } from 'app/providers/StoreProvider/types';
 import { PokemonDetailsResponse } from '../types/pokemonDetailsTypes';
 
-export const getPokemonDetailsRequest = createAsyncThunk(
+export const getPokemonDetailsRequest = createAsyncThunk<
+    PokemonDetailsResponse,
+    string,
+    ThunkApiConfig<string>
+>(
   'pokemonDetails',
-  async (id: string, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const res = await api.get<PokemonDetailsResponse>(`pokemon/${id}`);
+      const res = await thunkAPI.extra.api.get<PokemonDetailsResponse>(`pokemon/${id}`);
       return res.data;
     } catch (e) {
       const error = e as AxiosError;

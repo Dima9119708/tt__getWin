@@ -7,11 +7,9 @@ export const pokemonsSlice = createSlice({
   initialState: {
     fullData: [],
     sliceData: [],
-    count: 0,
+    count: 1,
     limit: 0,
     isLoading: true,
-    endSlice: 0,
-    startSlice: 0,
     offset: 0,
     page: 1,
     type: '',

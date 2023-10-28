@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { pokemonsSlice } from 'pages/Pokemons';
 import { pokemonTypes } from 'entities/PokemonTypes';
 import { pokemonDetailsSlice } from 'pages/PokemonDetails';
+import { api } from 'shared/config/api/apiConfig';
 
 export const store = configureStore({
   reducer: {
@@ -9,8 +10,11 @@ export const store = configureStore({
     pokemonTypes: pokemonTypes.reducer,
     pokemonDetails: pokemonDetailsSlice.reducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    thunk: {
+      extraArgument: {
+        api,
+      },
+    },
+  }),
 });
-
-export type RootState = ReturnType<typeof store.getState>
-
-export type AppDispatch = typeof store.dispatch

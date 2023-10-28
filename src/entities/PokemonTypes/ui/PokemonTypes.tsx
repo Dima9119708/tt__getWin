@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import { RootState } from 'app/providers/StoreProvider/store';
 import { Autocomplete, TextField } from '@mui/material';
 import { PokemonTypesProps } from 'entities/PokemonTypes/model/types/pokemonTypes';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
+import { RootState } from 'app/providers/StoreProvider/types';
 import { getPokemonTypesRequest } from '../model/service/pokemonTypesService';
 
 const PokemonTypesAutocomplete = (<

@@ -1,18 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from 'shared/config/api/apiConfig';
 import {
   Pokemon,
   PokemonsResponse,
   PokemonTypesResponse,
 } from 'pages/Pokemons/model/types/pokemonsTypes';
 import { AxiosError } from 'axios';
-import { RootState } from 'app/providers/StoreProvider/store';
 
-export const getPokemonsRequest = createAsyncThunk(
+import { ThunkApiConfig } from 'app/providers/StoreProvider/types';
+
+export const getPokemonsRequest = createAsyncThunk<
+    PokemonsResponse,
+    undefined,
+    ThunkApiConfig<string>
+>(
   'pokemons',
   async (_, thunkAPI) => {
     try {
-      const responsePokemons = await api.get<PokemonsResponse>(`pokemon?limit=${Number.MAX_SAFE_INTEGER}`);
+      const responsePokemons = await thunkAPI.extra
+        .api.get<PokemonsResponse>(`pokemon?limit=${Number.MAX_SAFE_INTEGER}`);
 
       return Object.assign<PokemonsResponse, Omit<PokemonsResponse, 'count'>>(responsePokemons.data, {
         results: responsePokemons.data.results.map((pokemon) => {
@@ -32,20 +37,22 @@ export const getPokemonsRequest = createAsyncThunk(
   },
 );
 
-export const getFilteredPokemons = createAsyncThunk(
-  'pokemons/filter',
+export const getFilteredPokemons = createAsyncThunk<
+    Pokemon[],
+    undefined,
+    ThunkApiConfig<string>
+>(
+  'pokemons/filtered',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState() as RootState;
-
     const {
       searchValue, type, fullData,
-    } = state.pokemons;
+    } = thunkAPI.getState().pokemons;
 
     try {
       let sliceData = fullData;
 
       if (type) {
-        const responsePokemonTypes = await api.get<PokemonTypesResponse>(`type/${type}`);
+        const responsePokemonTypes = await thunkAPI.extra.api.get<PokemonTypesResponse>(`type/${type}`);
 
         sliceData = responsePokemonTypes.data.pokemon.map(({ pokemon }) => pokemon);
       }

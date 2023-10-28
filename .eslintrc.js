@@ -13,7 +13,7 @@ module.exports = {
   },
   extends: ['eslint:recommended', 'airbnb'],
   ignorePatterns: ['webpack.config.ts'],
-  plugins: ['@typescript-eslint', 'react', 'i18next', 'react-hooks'],
+  plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   globals: {
     __BASE_APP_ROUTE__: true,
   },
@@ -45,40 +45,10 @@ module.exports = {
       ignoreComments: true,
     }],
     'no-underscore-dangle': 'off',
-    'i18next/no-literal-string': ['error', {
-      markupOnly: true,
-    }],
     'react/function-component-definition': ['error', {
       namedComponents: ['arrow-function'],
     }],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
   },
-  overrides: [
-    {
-      files: ['*saga*.ts', '*saga*.js', '*Saga*.ts'],
-      rules: {
-        'no-restricted-syntax': ['off'],
-        '@typescript-eslint/no-use-before-define': ['off'],
-        'no-use-before-define': ['off'],
-      },
-    },
-    {
-      files: [
-        'set.ts',
-        'get.ts',
-        'deepMerge.ts',
-        'cloneObject.ts',
-        'isPlainObject.ts',
-      ],
-      rules: {
-        'no-plusplus': 'off',
-        'no-param-reassign': 'off',
-        'no-nested-ternary': 'off',
-        'no-restricted-syntax': 'off',
-        'guard-for-in': 'off',
-        'no-prototype-builtins': 'off',
-      },
-    },
-  ],
 };

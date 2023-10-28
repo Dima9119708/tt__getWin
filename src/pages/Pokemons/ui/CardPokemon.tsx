@@ -1,5 +1,5 @@
 import {
-  Button, CardActions, CardContent, Tooltip, Typography, Card as MuiCard, Grid,
+  Button, CardActions, CardContent, Tooltip, Typography, Card as MuiCard, Fade, Avatar,
 } from '@mui/material';
 import { Pokemon } from 'pages/Pokemons/model/types/pokemonsTypes';
 import { memo } from 'react';
@@ -15,19 +15,28 @@ const CardPokemon = (props: CardProps) => {
   const onReadMore = () => navigate(`pokemon/${id}`);
 
   return (
-    <MuiCard className="cursor-pointer" onClick={onReadMore}>
-      <CardContent>
-        <Tooltip title={name}>
-          <Typography variant="h5" component="div" noWrap>
-            { name }
-          </Typography>
-        </Tooltip>
+    <Fade in timeout={400}>
+      <MuiCard className="cursor-pointer" onClick={onReadMore}>
+        <Avatar
+          alt={name}
+          className="h-[10rem] w-full"
+          imgProps={{ className: 'object-contain' }}
+          variant="rounded"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        />
+        <CardContent>
+          <Tooltip title={name}>
+            <Typography variant="h5" component="div" noWrap>
+              { name }
+            </Typography>
+          </Tooltip>
 
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </MuiCard>
+        </CardContent>
+        <CardActions className="justify-end">
+          <Button variant="outlined" size="small">Learn More</Button>
+        </CardActions>
+      </MuiCard>
+    </Fade>
   );
 };
 
