@@ -13,6 +13,7 @@ const App = () => (
       <Suspense fallback={<div />}>
         <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
         <div>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</div>
+        <div>CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</div>
         <RouterProvider router={router} />
       </Suspense>
     </ThemeProvider>
