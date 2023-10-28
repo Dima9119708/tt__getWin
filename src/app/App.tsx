@@ -11,6 +11,8 @@ const App = () => (
   <Provider store={store}>
     <ThemeProvider>
       <Suspense fallback={<div />}>
+        <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
+        <div>BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB</div>
         <RouterProvider router={router} />
       </Suspense>
     </ThemeProvider>
