@@ -9,7 +9,7 @@ interface CardProps extends Pokemon {
 }
 
 const CardPokemon = (props: CardProps) => {
-  const { id, name } = props;
+  const { id, img, name } = props;
   const navigate = useNavigate();
 
   const onReadMore = () => navigate(`pokemon/${id}`);
@@ -19,10 +19,10 @@ const CardPokemon = (props: CardProps) => {
       <MuiCard className="cursor-pointer" onClick={onReadMore}>
         <Avatar
           alt={name}
-          className="h-[10rem] w-full"
+          className="h-[15rem] w-full"
           imgProps={{ className: 'object-contain' }}
           variant="rounded"
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+          src={img}
         />
         <CardContent>
           <Tooltip title={name}>

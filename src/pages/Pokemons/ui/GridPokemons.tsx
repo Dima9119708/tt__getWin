@@ -31,7 +31,7 @@ const GridPokemons = () => {
     <Grid container spacing={2}>
       {
         isLoading && Array.from({ length: limit }, (_, idx) => (
-          <Grid key={idx} item xs={gridSize}>
+          <Grid key={`skeleton__${idx}`} item xs={gridSize}>
             <Skeleton variant="rounded" className="h-[10rem]" />
           </Grid>
         ))

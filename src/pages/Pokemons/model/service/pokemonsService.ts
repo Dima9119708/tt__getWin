@@ -7,6 +7,7 @@ import {
 import { AxiosError } from 'axios';
 
 import { ThunkApiConfig } from 'app/providers/StoreProvider/types';
+import { processMutationPokemon } from 'pages/Pokemons/lib/processMutationPokemon';
 
 export const getPokemonsRequest = createAsyncThunk<
     PokemonsResponse,
@@ -20,15 +21,7 @@ export const getPokemonsRequest = createAsyncThunk<
         .api.get<PokemonsResponse>(`pokemon?limit=${Number.MAX_SAFE_INTEGER}`);
 
       return Object.assign<PokemonsResponse, Omit<PokemonsResponse, 'count'>>(responsePokemons.data, {
-        results: responsePokemons.data.results.map((pokemon) => {
-          const parts = pokemon.url.split('/');
-
-          Object.assign<Pokemon, Pick<Pokemon, 'id'>>(pokemon, {
-            id: parts[parts.length - 2],
-          });
-
-          return pokemon;
-        }),
+        results: responsePokemons.data.results.map((pokemon) => processMutationPokemon(pokemon)),
       });
     } catch (e) {
       const error = e as AxiosError;
@@ -54,7 +47,7 @@ export const getFilteredPokemons = createAsyncThunk<
       if (type) {
         const responsePokemonTypes = await thunkAPI.extra.api.get<PokemonTypesResponse>(`type/${type}`);
 
-        sliceData = responsePokemonTypes.data.pokemon.map(({ pokemon }) => pokemon);
+        sliceData = responsePokemonTypes.data.pokemon.map(({ pokemon }) => processMutationPokemon(pokemon));
       }
 
       if (searchValue) {
